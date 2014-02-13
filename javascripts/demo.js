@@ -20,6 +20,15 @@
 
 // util functions
 
+  function isJson(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
   function scroll () {
     var h = messages.height();
     body.animate({scrollTop : h}, 'fast');
@@ -53,9 +62,13 @@
   });
 
   wrench.on('message', function onMessage (msg) {
-    var data = JSON.parse(msg);
-    addMessage(data.message, data.color);
-    scroll();
+    var data;
+
+    if (isJson(msg)) {
+      data = JSON.parse(msg);
+      addMessage(data.message, data.color);
+      scroll();
+    }
   });
 
 
