@@ -82,13 +82,11 @@
     if (code === 13) {
       e.preventDefault();
       enterMessage(input, messages);
-      console.log('enter');
     }
     if (code === 27) {
       e.preventDefault();
       document.execCommand('undo');
       input.blur();
-      console.log('escape');
     }
   });
 
