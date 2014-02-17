@@ -45,10 +45,11 @@
 
   function transmitMessage (message) {
     var msg = {
+      type: 'chat',
       message: message,
       color: randomColor
     };
-    wrench.send(JSON.stringify(msg));
+    wrench.send(msg);
   }
 
   function enterMessage () {
@@ -61,14 +62,9 @@
     url : 'wss://sheltered-headland-5539.herokuapp.com'
   });
 
-  wrench.on('message', function onMessage (msg) {
-    var data;
-
-    if (isJson(msg)) {
-      data = JSON.parse(msg);
-      addMessage(data.message, data.color);
-      scroll();
-    }
+  wrench.on('chat', function onMessage (msg) {
+    addMessage(msg.message, msg.color);
+    scroll();
   });
 
 
