@@ -10,8 +10,7 @@ html, body {
 .messages {
   font-size: 4em;
   font-weight: bold;
-  padding: 0 15px 0;
-  margin-bottom: 6rem;
+  padding: 0 15px 7rem;
   text-shadow: 3px 3px 9px rgba(0,0,0,0.2);
 }
 
